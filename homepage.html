@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!-- <link rel="stylesheet" type="text/css" href="css/homepage.css"/> -->
+	<title>Satellite</title>
+	<script src="https://d3js.org/d3.v5.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="js/baseVis.js"></script>
+	<script src="js/dataProcess.js"></script>
+	<script src="js/lodash.js"></script>
+	<script src="js/index.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<script lang="javascript" src="js/js-xlsx-0.8.0/dist/xlsx.full.min.js"></script>
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/ion.rangeSlider.css" />
+	<link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script src="js/ion.rangeSlider.js"></script>
+
+</head>
+
+<body>
+	<script>isDraw()</script>
+	<script>
+    $(function () {
+        $("#range").ionRangeSlider({
+            hide_min_max: true,
+            keyboard: true,
+            min: 1974,
+            max: 2019,
+            from: 1974,
+            to: 2019,
+            type: 'int',
+            step: 1,
+            prefix: "Year ",
+            grid: false,
+						onChange:timeSelect,
+						onFinish:isDraw,
+
+        });
+    });
+	</script>
+	<div id='mainPlot'>
+		<div id='headSet'>
+			<div id='container0'>
+				<p id='title'>Satellites</p>
+			</div>
+			<div id='container1'>
+				<div id='checkbox'>
+					  <input type='checkbox' id='civil' checked='checked' onclick="isDraw()" class='purposeBox'>
+						<label for='civil' id='civilText' class='purposelabel'>Civil</label>
+						<input type='checkbox' id='commercial' checked='checked' onclick="isDraw()" class='purposeBox'>
+						<label for='commercial' id='commercialText' class='purposelabel'>Commercial</label>
+						<input type='checkbox' id='government' checked='checked' onclick="isDraw()" class='purposeBox'>
+						<label for='government' id='governmentText' class='purposelabel'>Government</label>
+						<input type='checkbox' id='military' checked='checked' onclick="isDraw()" class='purposeBox'>
+						<label for='commercial' id='militaryText' class='purposelabel'>Military</label>
+						<input type='checkbox' id='multiple' checked='checked' onclick="isDraw()" class='purposeBox'>
+						<label for='commercial' id='multipleText' class='purposelabel'>Multiple</label>
+				</div>
+			</div>
+			<div id='container2'>
+				<div id=timeBar>
+						<input type="text" id="range" value="" name="range" id='time' />
+				</div>
+			</div>
+			<input type="button" id="orbitButton" onclick="orbitMove()" value="Orbit"></button>
+		</div>
+		<div id='container3'>
+			<p id='usa' onclick="extendUsa()">USA</p>
+			<p id='china' onclick="extendChina()">CHINA</p>
+			<p id='russia' onclick="extendRussia()">RUSSIA</p>
+			<p id='others' onclick="extendOthers()">OTHERS</p>
+		</div>
+		<div id='leo'></div>
+		<div id='meo'></div>
+		<div id='geo'></div>
+	</div>
+</body>
+
+
+</html>
